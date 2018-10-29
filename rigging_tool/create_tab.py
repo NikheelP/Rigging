@@ -64,7 +64,6 @@ class CREATE:
         self.create_vertical_layout.addWidget(self.create_tool_box)
         self.horizontalLayout_3.addLayout(self.create_vertical_layout)
 
-
     def create_def(self):
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.create_page)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
