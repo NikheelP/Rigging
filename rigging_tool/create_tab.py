@@ -91,7 +91,7 @@ class CREATE:
             self.pushButton_2.setIconSize(QtCore.QSize(180, 80))
             self.pushButton_2.setToolTip(total_controller[a])
             self.pushButton_2.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
-            #self.pushButton_2.clicked.connect(partial(self.controller, a))
+            self.pushButton_2.clicked.connect(partial(self.controller, a))
             self.pushButton_2.setStyleSheet(
                 "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
             #self.pushButton_2.customContextMenuRequested.connect(partial(self.buttonAMenu, button_value))
@@ -425,5 +425,110 @@ class CREATE:
         self.object_vertical_layout.addWidget(self.object_scroll_area)
         self.horizontalLayout_6.addLayout(self.object_vertical_layout)
 
+    def controller(self,num):
+        if num == 0:
+            self.controller_class.triangle_ctrl()
+        elif num == 1:
+            self.controller_class.square_ctrl()
+        elif num == 2:
+            self.controller_class.angle_ctrl()
+        elif num == 3:
+            self.controller_class.cross_ctrl()
+        elif num == 4:
+            self.controller_class.fat_cross_ctrl()
+        elif num == 5:
+            self.controller_class.circle_ctrl()
+        elif num == 6:
+            self.controller_class.arc_270_ctrl()
+        elif num == 7:
+            self.controller_class.arc_180_ctrl()
+        elif num == 8:
+            self.controller_class.spiral_ctrl()
+        elif num == 9:
+            self.controller_class.half_pyramid_ctrl()
+        elif num == 10:
+            self.controller_class.Pyramid_ctrl()
+        elif num == 11:
+            self.controller_class.half_spear_ctrl()
+        elif num == 12:
+            self.controller_class.cube_ctrl()
+        elif num == 13:
+            self.controller_class.sphere_ctrl()
+        elif num == 14:
+            self.controller_class.hexagon_ctrl()
+        elif num == 15:
+            self.controller_class.rombus_ctrl()
+        elif num == 16:
+            self.controller_class.rombus_two_ctrl()
+        elif num == 17:
+            self.controller_class.rombus_three_ctrl()
+        elif num == 18:
+            self.controller_class.cone_ctrl()
+        elif num == 19:
+            self.controller_class.single_thine_ctrl()
+        elif num == 20:
+            self.controller_class.single_normal_ctrl()
+        elif num == 21:
+            self.controller_class.single_fat_ctrl()
+        elif num == 22:
+            self.controller_class.double_thine_ctrl()
+        elif num == 23:
+            self.controller_class.double_normal_ctrl()
+        elif num == 24:
+            self.controller_class.double_fat_ctrl()
+        elif num == 25:
+            self.controller_class.four_thin_ctrl()
+        elif num == 26:
+            self.controller_class.four_normal_ctrl()
+        elif num == 27:
+            self.controller_class.four_fat_ctrl()
+        elif num == 28:
+            self.controller_class.eight_ctrl()
+        elif num == 29:
+            self.controller_class.ninty_thin_ctrl()
+        elif num == 30:
+            self.controller_class.ninty_normal_ctrl()
+        elif num == 31:
+            self.controller_class.ninty_fat_ctrl()
+        elif num == 32:
+            self.controller_class.oneeighty_thin_ctrl()
+        elif num == 33:
+            self.controller_class.oneeight_normal_ctrl()
+        elif num == 34:
+            self.controller_class.oneeight_fat_ctrl()
+        elif num == 35:
+            self.controller_class.transform_ctrl()
+        elif num == 36:
+            self.controller_class.footprint_ctrl()
+        elif num == 37:
+            self.controller_class.hand_ctrl()
+        elif num == 38:
+            self.controller_class.vision()
+        elif num == 39:
+            self.controller_class.arrows_on_ball_ctrl()
+        elif num == 40:
+            self.controller_class.cog_ctrl()
+        elif num == 41:
+            self.controller_class.sun_ctrl()
+        elif num == 42:
+            self.controller_class.pin_ctrl()
+        elif num == 43:
+            self.controller_class.jack_ctrl()
+        elif num == 44:
+            self.controller_class.nail_ctrl()
+        elif num == 45:
+            self.controller_class.double_nail_ctrl()
+        elif num == 46:
+            self.controller_class.four_nail_ctrl()
+        elif num == 47:
+            self.controller_class.dumbell_ctrl()
+        elif num == 48:
+            self.controller_class.pointer_ctrl()
+        elif num == 49:
+            self.controller_class.aim_ctrl()
+        elif num == 50:
+            self.controller_class.aim_two_ctrl()
+        elif num == 52:
+            self.controller_class.traiangle_new_ctrl()
 
 
