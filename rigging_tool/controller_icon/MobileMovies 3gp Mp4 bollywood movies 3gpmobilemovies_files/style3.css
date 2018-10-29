@@ -1,0 +1,23 @@
+<!---
+body {
+background: #D1E0E2;
+color: #2C4956;
+font-family:Arial;
+color; #000000;
+font-size: 13px
+
+}
+input,textarea, select,{
+	color : #000000;
+	font: normal 13px;
+	border-collapse: collapse; border: 1px solid #000000;
+}
+.maintable {border: 1px #FFFFFF solid; color: #ffffff; background-color: #000000; width: 90%; padding: 0px;}
+.headline {font-family: Arial;font-weight: bold;color: #92A988;width: 90%;background-color: #CBD8C5;font-size: 13px;}
+.catline {font-family: Arial;font-weight: bold;color: #000000;background-color: #CCCCCC;font-size: 13px;}
+.forumrow {font-family: Arial;color: #000000;width: 90%;background-color: #E1ECDC;font-size: 13px;}
+.forumrow1 {font-family: Arial;font-weight: bold;color: #000000;width: 90%;background-color: #E1ECDC;font-size: 13px;}
+.backztable {border: 1px #FFFFFF solid; color: #ffffff; background-color: #9FB993; width: 90%; padding: 0px;}
+.backmtable {border: 1px #FFFFFF solid; color: #ffffff; background-color: #E1ECDC; width: 90%; padding: 0px;}
+.backtable {border: 1px #FFFFFF solid; color: #ffffff; background-color: #CBD8C5; width: 90%; padding: 0px;}
+--->
