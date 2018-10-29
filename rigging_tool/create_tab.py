@@ -16,7 +16,7 @@ from functools import partial
 
 
 
-class CREATE:
+class CUSTOM:
     def __init__(self):
         pass
 

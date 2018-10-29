@@ -21,11 +21,9 @@ reload(create_tab)
 class RIGGING_TOOL:
     def __init__(self):
         self.create_tab_class = create_tab.CREATE()
-
-
         pass
 
-    def ui(self,widget_name):
+    def rigging_tool_ui(self,widget_name):
 
         self.horizontalLayout_2 = QtGui.QHBoxLayout(widget_name)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
