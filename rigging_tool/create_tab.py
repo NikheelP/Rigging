@@ -139,7 +139,7 @@ class CREATE:
         self.cluster_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.cluster_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.cluster_button.clicked.connect(self.deform_cluster_def)
+        self.cluster_button.clicked.connect(cmds.CreateCluster)
         self.gridLayout_2.addWidget(self.cluster_button, 0, 0, 1, 1)
 
         # WRAP
@@ -203,7 +203,7 @@ class CREATE:
         self.wire_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.wire_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.wire_button.clicked.connect(self.deform_wire_def)
+        self.wire_button.clicked.connect(cmds.CreateWrap)
         self.gridLayout_2.addWidget(self.wire_button, 1, 1, 1, 1)
 
         # JIGGLE
@@ -219,7 +219,7 @@ class CREATE:
         self.jiggle_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.jiggle_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.jiggle_button.clicked.connect(self.deform_jiggle_def)
+        self.jiggle_button.clicked.connect(cmds.CreateJiggleDeformer)
         self.gridLayout_2.addWidget(self.jiggle_button, 1, 2, 1, 1)
 
         # NON LINER BEND
@@ -235,7 +235,7 @@ class CREATE:
         self.non_liner_bend_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.non_liner_bend_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_bend_button.clicked.connect(self.deform_bend_def)
+        self.non_liner_bend_button.clicked.connect(cmds.Bend)
         self.gridLayout_2.addWidget(self.non_liner_bend_button, 2, 0, 1, 1)
 
         # NON LINER FLARE
@@ -251,7 +251,7 @@ class CREATE:
         self.non_liner_flare_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.non_liner_flare_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_flare_button.clicked.connect(self.deform_flare_def)
+        self.non_liner_flare_button.clicked.connect(cmds.Flare)
         self.gridLayout_2.addWidget(self.non_liner_flare_button, 2, 1, 1, 1)
 
         # NON LINER SQUASH
@@ -267,7 +267,7 @@ class CREATE:
         self.non_liner_squash_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.non_liner_squash_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_squash_button.clicked.connect(self.deform_squash_def)
+        self.non_liner_squash_button.clicked.connect(cmds.Squash)
         self.gridLayout_2.addWidget(self.non_liner_squash_button, 2, 2, 1, 1)
 
         # NON LINER SINE
@@ -283,7 +283,7 @@ class CREATE:
         self.non_liner_sine_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.non_liner_sine_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_sine_button.clicked.connect(self.deform_sine_def)
+        self.non_liner_sine_button.clicked.connect(cmds.Sine)
         self.gridLayout_2.addWidget(self.non_liner_sine_button, 3, 0, 1, 1)
 
         # NON LINER TWIST
@@ -299,7 +299,7 @@ class CREATE:
         self.non_liner_twist_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.non_liner_twist_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_twist_button.clicked.connect(self.deform_twist_def)
+        self.non_liner_twist_button.clicked.connect(cmds.Twist)
         self.gridLayout_2.addWidget(self.non_liner_twist_button, 3, 1, 1, 1)
 
         # NON LINER WAVE
@@ -313,8 +313,8 @@ class CREATE:
         icon_path = controller_icon_path + '/wave.png'
         self.non_liner_wave_button.setIcon(QtGui.QIcon(icon_path))
         self.non_liner_wave_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
-        #self.non_liner_wave_button.setStyleSheet("background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.non_liner_wave_button.clicked.connect(self.deform_wave_def)
+        self.non_liner_wave_button.setStyleSheet("background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
+        self.non_liner_wave_button.clicked.connect(cmds.Wave)
         self.gridLayout_2.addWidget(self.non_liner_wave_button, 3, 2, 1, 1)
 
         # SCULPTER
@@ -330,7 +330,7 @@ class CREATE:
         self.sculpter_button.setIconSize(QtCore.QSize(self.icon_size_x, self.icon_size_y))
         self.sculpter_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.sculpter_button.clicked.connect(self.deform_sculpter_def)
+        self.sculpter_button.clicked.connect(cmds.CreateSculptDeformer)
         self.gridLayout_2.addWidget(self.sculpter_button, 4, 0, 1, 1)
 
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -366,7 +366,7 @@ class CREATE:
         self.joint_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
         self.joint_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
-        #self.joint_button.clicked.connect(self.object_joint_def)
+        self.joint_button.clicked.connect(cmds.JointTool)
         self.gridLayout_3.addWidget(self.joint_button, 0, 0, 1, 1)
 
         # IK HANDLE SINGLE CHAIN
@@ -383,7 +383,7 @@ class CREATE:
         button_tool_tip = 'Create a Ik Handle Single chain Object'
         self.ik_handle_single_chain_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.ik_handle_single_chain_button.clicked.connect(self.object_ik_single_chain_def)
+        self.ik_handle_single_chain_button.clicked.connect(cmds.IKHandleTool)
         self.gridLayout_3.addWidget(self.ik_handle_single_chain_button, 0, 1, 1, 1)
 
         # IK HANDLE ROTATE CHAIN
@@ -400,7 +400,7 @@ class CREATE:
         button_tool_tip = 'Create a Ik Handle Rotate chain Object'
         self.ik_handle_rotate_chain_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.ik_handle_rotate_chain_button.clicked.connect(self.object_ik_rotate_chain_def)
+        self.ik_handle_rotate_chain_button.clicked.connect(cmds.IKHandleTool)
         self.gridLayout_3.addWidget(self.ik_handle_rotate_chain_button, 0, 2, 1, 1)
 
         # IK SPINE CHAIN
@@ -416,7 +416,7 @@ class CREATE:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Create a Ik Spine chain Object'
         self.ik_spine_handle_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.ik_spine_handle_button.clicked.connect(self.object_ik_spine_chain_def)
+        self.ik_spine_handle_button.clicked.connect(cmds.IKSplineHandleTool)
         self.gridLayout_3.addWidget(self.ik_spine_handle_button, 1, 0, 1, 1)
 
         spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)

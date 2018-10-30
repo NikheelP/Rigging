@@ -53,7 +53,7 @@ class CONNECTION:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Create a Transform Connection between 2 Object Object'
         self.translate_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.translate_button.clicked.connect(self.connection_transform_def)
+        self.translate_button.clicked.connect(self.connection_transform_def)
         self.gridLayout_4.addWidget(self.translate_button, 0, 0, 1, 1)
 
         # ROTATE
@@ -69,7 +69,7 @@ class CONNECTION:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Create a Rotate Connection between 2 Object Object'
         self.rotate_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.rotate_button.clicked.connect(self.connection_rotate_def)
+        self.rotate_button.clicked.connect(self.connection_rotate_def)
         self.gridLayout_4.addWidget(self.rotate_button, 0, 1, 1, 1)
 
         # SCALE
@@ -84,7 +84,7 @@ class CONNECTION:
         self.scale_button.setStyleSheet(
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Create a Scale Connection between 2 Object Object'
-        #self.scale_button.clicked.connect(self.connection_scale_def)
+        self.scale_button.clicked.connect(self.connection_scale_def)
         self.scale_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
 
         self.gridLayout_4.addWidget(self.scale_button, 0, 2, 1, 1)
@@ -144,3 +144,28 @@ class CONNECTION:
 
         self.connection_scroll_area.setWidget(self.connection_scrollarea_widget_contents)
         self.horizontalLayout_7.addWidget(self.connection_scroll_area)
+
+    def connection_transform_def(self):
+        sel_obj = cmds.ls(sl=True)
+        cmds.connectAttr((sel_obj[0] + '.translate'),(sel_obj[1] + '.translate'),f=True)
+
+    def connection_rotate_def(self):
+        sel_obj = cmds.ls(sl=True)
+        cmds.connectAttr((sel_obj[0] + '.rotate'),(sel_obj[1] + '.rotate'),f=True)
+
+    def connection_scale_def(self):
+        sel_obj = cmds.ls(sl=True)
+        cmds.connectAttr((sel_obj[0] + '.scale'),(sel_obj[1] + '.scale'),f=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
