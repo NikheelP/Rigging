@@ -13,6 +13,8 @@ from PySide import QtGui
 import sys
 from functools import partial
 
+import add_new
+reload(add_new)
 
 
 class AUTO_RIG:
@@ -187,7 +189,7 @@ class AUTO_RIG:
         self.add_new_button = QtGui.QPushButton(self.auto_rig_new_scrollArea_widget_contents)
         self.add_new_button.setObjectName("add_new_button")
         self.add_new_button.setText('Add New')
-        #self.add_new_button.clicked.connect(add_new.main)
+        self.add_new_button.clicked.connect(add_new.main)
         self.verticalLayout_8.addWidget(self.add_new_button)
 
         # DELETE ALL HEAD
