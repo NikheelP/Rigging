@@ -13,7 +13,18 @@ from PySide import QtGui
 import sys
 from functools import partial
 
-
+import trasnlate_objrct_to_cluster,soft_selection_to_cluster,combine_cluster,traslate_to_joint,soft_selection_to_joint,combine_joint
+import cluster_to_joint,joint_to_cluster,mirror_cluster,mirror_joint
+reload(trasnlate_objrct_to_cluster)
+reload(soft_selection_to_cluster)
+reload(combine_cluster)
+reload(traslate_to_joint)
+reload(soft_selection_to_joint)
+reload(combine_joint)
+reload(cluster_to_joint)
+reload(joint_to_cluster)
+reload(mirror_cluster)
+reload(mirror_joint)
 
 class TRANSFER:
     def __init__(self):
@@ -22,7 +33,6 @@ class TRANSFER:
         self.button_color_x = 64
         self.button_color_y = 64
         self.button_color_z = 64
-        pass
 
     def widget_def(self,widget_name):
         self.horizontalLayout_8 = QtGui.QHBoxLayout(widget_name)
@@ -86,7 +96,7 @@ class TRANSFER:
         button_tool_tip = 'Select all the Transform Deformation and convert into the Cluster'
         self.translate_object_to_cluster_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.translate_object_to_cluster_button.clicked.connect(translate_object_to_cluster.main)
+        self.translate_object_to_cluster_button.clicked.connect(traslate_to_joint.main)
         self.gridLayout_12.addWidget(self.translate_object_to_cluster_button, 0, 0, 1, 1)
 
         # SOFT SELECTION TO CLUSTER
@@ -100,7 +110,7 @@ class TRANSFER:
         button_tool_tip = 'Select soft selection of the object and convert into the Cluster'
         self.soft_selection_to_cluster_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.soft_selection_to_cluster_button.clicked.connect(soft_selection_to_cluster.SOFT_SELECTION_TO_CLUSTER)
+        self.soft_selection_to_cluster_button.clicked.connect(soft_selection_to_cluster.SOFT_SELECTION_TO_CLUSTER)
         self.gridLayout_12.addWidget(self.soft_selection_to_cluster_button, 0, 1, 1, 1)
 
         # COMBINE CLUSTER
@@ -113,7 +123,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Select n Number of the cluster and combine into one cluster'
         self.combine_cluster_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.combine_cluster_button.clicked.connect(combine_cluster.COMBINE_CLUSTER)
+        self.combine_cluster_button.clicked.connect(combine_cluster.COMBINE_CLUSTER)
         self.gridLayout_12.addWidget(self.combine_cluster_button, 0, 2, 1, 1)
 
         spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -145,7 +155,7 @@ class TRANSFER:
         button_tool_tip = 'Select All the Transform object and convert into the joint'
         self.transfer_to_joint_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.transfer_to_joint_button.clicked.connect(translate_to_joint.main)
+        self.transfer_to_joint_button.clicked.connect(traslate_to_joint.main)
         self.gridLayout_13.addWidget(self.transfer_to_joint_button, 0, 0, 1, 1)
 
         # SOFT SELECTION TO JOINT
@@ -159,7 +169,7 @@ class TRANSFER:
         button_tool_tip = 'Select soft selection to object and convert into the joint'
         self.soft_selection_to_joint_button.setToolTip(
             "<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.soft_selection_to_joint_button.clicked.connect(soft_selection_to_joint.SOFT_SELECTION_TO_JOINT)
+        self.soft_selection_to_joint_button.clicked.connect(soft_selection_to_joint.SOFT_SELECTION_TO_JOINT)
         self.gridLayout_13.addWidget(self.soft_selection_to_joint_button, 0, 1, 1, 1)
 
         # COMBINE TO JOINT
@@ -172,7 +182,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Select two or more than two joint and combine with one joint'
         self.combine_joint_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.combine_joint_button.clicked.connect(combine_joint.COMBINE_JOINT)
+        self.combine_joint_button.clicked.connect(combine_joint.COMBINE_JOINT)
         self.gridLayout_13.addWidget(self.combine_joint_button, 0, 2, 1, 1)
 
         spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -180,7 +190,6 @@ class TRANSFER:
 
         self.transfer_joint_scroll_area.setWidget(self.transfer_joint_scrollArea_widget_contents)
         self.horizontalLayout_17.addWidget(self.transfer_joint_scroll_area)
-
 
     def transfer_individual_def(self):
         self.horizontalLayout_18 = QtGui.QHBoxLayout(self.transfer_individual)
@@ -205,7 +214,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Convert selected Cluster to the Joint'
         self.cluster_to_joint_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.cluster_to_joint_button.clicked.connect(cluster_to_joint.CLUSTER_TO_JOINT)
+        self.cluster_to_joint_button.clicked.connect(cluster_to_joint.CLUSTER_TO_JOINT)
         self.gridLayout_14.addWidget(self.cluster_to_joint_button, 0, 0, 1, 1)
 
         # JOINT TO CLUSTER
@@ -218,7 +227,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Convert selected Joint to the cluster'
         self.joint_to_cluster_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.joint_to_cluster_button.clicked.connect(joint_to_cluster.JOINT_TO_CLUSTER)
+        self.joint_to_cluster_button.clicked.connect(joint_to_cluster.JOINT_TO_CLUSTER)
         self.gridLayout_14.addWidget(self.joint_to_cluster_button, 0, 1, 1, 1)
 
         # Mirror CLUSTER
@@ -231,7 +240,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Mirror Joint'
         self.mirror_cluster_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.mirror_cluster_button.clicked.connect(mirror_cluster.main)
+        self.mirror_cluster_button.clicked.connect(mirror_cluster.main)
         self.gridLayout_14.addWidget(self.mirror_cluster_button, 0, 2, 1, 1)
 
         # Mirror JOINT
@@ -244,7 +253,7 @@ class TRANSFER:
             "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
         button_tool_tip = 'Mirror Joint'
         self.mirror_joint_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
-        #self.mirror_joint_button.clicked.connect(mirror_joint.main)
+        self.mirror_joint_button.clicked.connect(mirror_joint.main)
         self.gridLayout_14.addWidget(self.mirror_joint_button, 1, 0, 1, 1)
 
         spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
