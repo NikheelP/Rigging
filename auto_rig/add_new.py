@@ -22,15 +22,26 @@ from PySide import QtGui
 #import sip
 import maya.mel as mel
 
+import head_add_new,spine_add_new,arm_add_new,leg_add_new,tail_add_new,wing_add_new,face_add_new
+reload(head_add_new)
+reload(spine_add_new)
+reload(arm_add_new)
+reload(leg_add_new)
+reload(tail_add_new)
+reload(wing_add_new)
+reload(face_add_new)
+
+
+
 class ADD_NEW(MayaQWidgetDockableMixin, QtGui.QMainWindow):
     def __init__(self, parent=None):
-        #self.head_class = head.HEAD()
-        #self.spine_class = spine.SPINE()
-        #self.arm_class = arm.ARM()
-        #self.leg_class = leg.LEG()
-        #self.tail_class = tail.TAIL()
-        #self.wing_class = wing.WING()
-        #self.face_class = face.FACE()
+        self.head_add_new_class = head_add_new.ADD_NEW()
+        self.spine_add_new_class = spine_add_new.ADD_NEW()
+        self.arm_add_new_class = arm_add_new.ADD_NEW()
+        self.leg_add_new_class = leg_add_new.ADD_NEW()
+        self.tail_add_new_class = tail_add_new.ADD_NEW()
+        self.wing_add_new_class = wing_add_new.ADD_NEW()
+        self.face_add_new_class = face_add_new.ADD_NEW()
 
         super(ADD_NEW, self).__init__(parent=parent)
         self.icon_size_x = 100
@@ -141,62 +152,64 @@ class ADD_NEW(MayaQWidgetDockableMixin, QtGui.QMainWindow):
 
     def check_box_value_def(self, value, new):
         pass
-        '''
+
         if value == 0:
             checkd = self.head_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.head_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.head_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.head_class.new_clear()
+                self.head_add_new_class.clear()
+
         if value == 2:
             checkd = self.spine_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.spine_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.spine_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.spine_class.new_clear()
+                self.spine_add_new_class.clear()
 
         if value == 3:
             checkd = self.arm_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.arm_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.arm_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.arm_class.new_clear()
+                self.arm_add_new_class.clear()
 
         if value == 4:
             checkd = self.leg_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.leg_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.leg_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.leg_class.new_clear()
+                self.leg_add_new_class.clear()
 
         if value == 5:
             checkd = self.tail_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.tail_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.tail_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.tail_class.new_clear()
+                self.tail_add_new_class.clear()
 
         if value == 6:
             checkd = self.wing_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.wing_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.wing_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.wing_class.new_clear()
+                self.wing_add_new_class.clear()
 
         if value == 7:
             checkd = self.face_check_box.isChecked()
             # get the checkbox status
             if checkd == True:
-                self.face_class.new(self.common_scrollArea_widget_contents, self.verticalLayout_5)
+                self.face_add_new_class.ui(self.common_scrollArea_widget_contents, self.verticalLayout_5)
             else:
-                self.face_class.new_clear()
-        '''
+                self.face_add_new_class.clear()
+
+
     def face_new_def(self):
         pass
 

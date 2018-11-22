@@ -13,8 +13,8 @@ from PySide import QtGui
 import sys
 from functools import partial
 
-import controller
-reload(controller)
+import controller_obj
+reload(controller_obj)
 
 rigging_path = 'H:/Script/Git/Rigging'
 controller_icon_path = rigging_path + '/rigging_tool/controller_icon'
@@ -28,9 +28,7 @@ class CREATE:
         self.button_color_y = 64
         self.button_color_z = 64
 
-
-        self.controller_class = controller.CONTROLLER()
-        pass
+        self.controller_class = controller_obj.CONTROLLER()
 
     def widget_def(self,widget_name):
         self.horizontalLayout_3 = QtGui.QHBoxLayout(widget_name)

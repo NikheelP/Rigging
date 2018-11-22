@@ -193,5 +193,20 @@ class CUSTOM:
         #self.save_rig_to_json_button.clicked.connect(self.save_rig_to_json_button_class.save_json_file)
         self.gridLayout_6.addWidget(self.save_rig_to_json_button, 3, 0, 1, 1)
 
+        #Resample Joint
+        self.resample_jnt_button = QtGui.QPushButton(self.custom_scrollArea_widget_contents)
+        self.resample_jnt_button.setMinimumSize(QtCore.QSize(0, 100))
+        name = 'ReSample Jnt'
+        self.resample_jnt_button.setObjectName(name)
+        self.resample_jnt_button.setText(name)
+        self.resample_jnt_button.setStyleSheet(
+            "background-color: rgb(%s,%s,%s)" % (self.button_color_x, self.button_color_y, self.button_color_z))
+        button_tool_tip = 'Controller Color'
+        self.resample_jnt_button.setToolTip("<font color=white>%s</font>" % button_tool_tip.replace("   ", "<br/>"))
+        self.resample_jnt_button.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        # self.save_rig_to_json_button.customContextMenuRequested.connect(partial(self.custom_menu_def, value + 8))
+        # self.save_rig_to_json_button.clicked.connect(self.save_rig_to_json_button_class.save_json_file)
+        self.gridLayout_6.addWidget(self.resample_jnt_button, 3, 1, 1, 1)
+
         self.custom_scroll_area.setWidget(self.custom_scrollArea_widget_contents)
         self.horizontalLayout_9.addWidget(self.custom_scroll_area)

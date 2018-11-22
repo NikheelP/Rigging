@@ -21,6 +21,8 @@ from PySide import QtCore
 from PySide import QtGui
 #import sip
 import maya.mel as mel
+import sys
+import rig_helper
 
 class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -30,6 +32,8 @@ class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
         self.button_color_x = 64
         self.button_color_y = 64
         self.button_color_z = 64
+
+        self.rig_help_class = rig_helper.rig_help()
 
         self.ui()
 
@@ -90,12 +94,6 @@ class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.surface_list_widget = QtGui.QListWidget(self.surface_list_scrollArea_widget_contents)
         self.surface_list_widget.setObjectName("surface_list_widget")
-        item = QtGui.QListWidgetItem()
-        self.surface_list_widget.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.surface_list_widget.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.surface_list_widget.addItem(item)
         self.verticalLayout_5.addWidget(self.surface_list_widget)
         self.surface_list_scroll_area.setWidget(self.surface_list_scrollArea_widget_contents)
         self.verticalLayout_6.addWidget(self.surface_list_scroll_area)
@@ -118,7 +116,7 @@ class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
         self.extract_cluster_button = QtGui.QPushButton(self.surface_extract_cluster_group_box)
         self.extract_cluster_button.setObjectName("extract_cluster_button")
         self.extract_cluster_button.setText('Extract Cluster')
-        self.extract_cluster_button.clicked.connect(self.extract_cluster)
+        self.extract_cluster_button.clicked.connect(self.extract_cluster_def)
         self.surface_extract_cluster_vertical_layout.addWidget(self.extract_cluster_button)
         self.verticalLayout_4.addLayout(self.surface_extract_cluster_vertical_layout)
         self.verticalLayout_6.addWidget(self.surface_extract_cluster_group_box)
@@ -143,13 +141,18 @@ class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
             item.setText(each)
             self.surface_list_widget.addItem(item)
 
-    def extract_cluster(self):
+
+    def extract_cluster_def(self):
+        self.extract_cluster(self.sel_transform_obj,self.sel_surface_obj)
+
+
+    def extract_cluster(self,transform_list,surface_list):
         # now extract the cluster
-        for each_transform in self.sel_transform_obj:
+        for each_transform in transform_list:
             jointMSelection = om.MSelectionList()
             jointMSelection.add(each_transform)
             jointDagPath = jointMSelection.getDagPath(0)
-            for each_surface in self.sel_surface_obj:
+            for each_surface in surface_list:
                 # set the defaule and move object vertex value
                 self.set_base_move_pos_list(each_transform, each_surface)
 
@@ -239,12 +242,9 @@ class TRANSFORM_OBJECT_TO_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
         self.cluster_shape_name = cmds.listRelatives(self.cluster_handle_name, s=True)[0]
 
         self.point_position = cmds.xform(each_transform, q=1, ws=1, rp=1)
-        cmds.setAttr((self.cluster_handle_name + '.rotatePivotX'), self.point_position[0])
-        cmds.setAttr((self.cluster_handle_name + '.rotatePivotY'), self.point_position[1])
-        cmds.setAttr((self.cluster_handle_name + '.rotatePivotZ'), self.point_position[2])
-        cmds.setAttr((self.cluster_handle_name + '.scalePivotX'), self.point_position[0])
-        cmds.setAttr((self.cluster_handle_name + '.scalePivotY'), self.point_position[1])
-        cmds.setAttr((self.cluster_handle_name + '.scalePivotZ'), self.point_position[2])
+
+        #move the pivot
+        self.rig_help_class.pivot_move(self.cluster_handle_name,self.point_position)
 
         cmds.setAttr((self.cluster_shape_name + '.originX'), self.point_position[0])
         cmds.setAttr((self.cluster_shape_name + '.originY'), self.point_position[1])

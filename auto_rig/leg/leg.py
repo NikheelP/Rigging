@@ -618,7 +618,6 @@ class LEG:
             a += 1
 
     def finger_def(self):
-
         a = 0
         self.locator_list = []
         x_val = 0
@@ -646,7 +645,6 @@ class LEG:
 
         a = 0
         while a < self.no_finger_line_edit_query:
-
             new_loc = 'New_Loc_' + str(a)
             cmds.spaceLocator(n=new_loc, p=(0, 0, 0))
             cmds.parentConstraint(self.locator_list[a], new_loc, mo=False)
@@ -664,7 +662,7 @@ class LEG:
                 self.finger_sphere_name = self.finger_common + "_Geo"
                 self.finger_sphere_clu_name = self.finger_common + '_Clu'
                 self.finger_sphere_clu_handle_name = self.finger_sphere_clu_name + 'Handle'
-                # self.finger_default_pos = [61.0,0,]
+                #self.finger_default_pos = [61.0,0,]
 
                 self.finger_pos = [self.loc_position[0], 0, x_value]
                 self.sphere_list.append(self.finger_sphere_name)

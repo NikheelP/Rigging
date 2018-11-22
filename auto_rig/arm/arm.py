@@ -602,9 +602,7 @@ class ARM:
                     x_value += 3
                 else:
                     x_value -= 3
-
                 b += 1
-
             a += 1
 
         # now get each positiona dn create a finger
@@ -613,7 +611,7 @@ class ARM:
             self.finger_query = int(self.arm_finger_line_edit[a].text())
             self.finger_indi_def(finger_query=self.finger_query,
                                  value=a)
-            a += 1
+            a+=1
 
         a = 0
         while a < self.no_finger_line_edit_query:
@@ -621,7 +619,7 @@ class ARM:
             self.finger_query = int(self.arm_finger_line_edit[a].text())
             self.finger_indi_parent_def(finger_query=self.finger_query,
                                         value=a)
-            a += 1
+            a+=1
 
         cmds.select(self.locator_new_grp_name)
         cmds.delete()
@@ -670,7 +668,7 @@ class ARM:
                 self.cluster_grp_list.append(self.cylinder_lower_cluster_handle_name)
                 self.cylinder_list.append(self.cylinder_name)
 
-            if b + 1 != 1:
+            if b+1 != 1:
                 self.cylinder_name = self.prefix_name + '_' + self.arm_side + "_Arm_Finger_" + str(
                     value + 1) + "_" + str(b + 1) + "_Tem_" + str(self.val) + "_Cylinder_Geo"
                 self.cylinder_upper_cluster_name = self.prefix_name + '_' + self.arm_side + "_Arm_Finger_Upper_" + str(
@@ -705,8 +703,7 @@ class ARM:
                 self.arm_shoulder_outer_ctrl = self.finger_common + '_Outer_Ctrl'
                 self.ctrl_list.append(self.arm_shoulder_inner_ctrl)
                 self.ctrl_list.append(self.arm_shoulder_outer_ctrl)
-
-            b += 1
+            b+=1
 
     def finger_indi_parent_def(self, finger_query, value):
         b = 0
@@ -719,7 +716,7 @@ class ARM:
             loc_name = 'Finger_' + str(value) + '_' + str(b) + '_Loc'
 
             self.finger_pos = cmds.xform(loc_name, q=1, ws=1, rp=1)
-            if b == 0:
+            if b==0:
                 # create a controller and snap
                 previous_upper_cluster_handle_name = self.prefix_name + "_" + self.arm_side + "_Arm_Finger_Hand_to_Upper_" + str(
                     value + 1) + '_' + str(b + 1) + "_Tem_" + str(self.val) + '_CluHandle'
@@ -754,8 +751,7 @@ class ARM:
                 cmds.select(next_ctrl_outer_name, self.arm_shoulder_outer_ctrl)
                 cmds.parent()
                 cmds.parentConstraint(self.arm_shoulder_inner_ctrl, next_cluster_lower_cluster_handle_name, mo=False)
-
-            b += 1
+            b+=1
 
     def roll_bone(self, type, upper_object, lower_object, no_of_bone):
         # create a curve
@@ -1681,7 +1677,6 @@ class ARM:
     def finger_change_def(self):
         # get the no of the finger
 
-        # ssss_L_Arm_Finger_4_1_Tem_1_Outer_Ctrl
         # get the first controller
         outer_ctrl = self.prefix_name + '_' + self.arm_side + '_Arm_Finger_*_*_Tem_' + self.val + \
                      '_Outer_Ctrl'

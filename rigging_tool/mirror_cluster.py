@@ -20,11 +20,13 @@ from PySide import QtCore
 from PySide import QtGui
 #import sip
 import maya.mel as mel
+import rig_helper
 
 class MIRROR_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
     def __init__(self,parent=None):
         super(MIRROR_CLUSTER, self).__init__(parent=parent)
         #self.cluster_mirror()
+        self.rig_help_class = rig_helper.pivot_move()
         self.ui()
 
     def ui(self):
@@ -255,12 +257,7 @@ class MIRROR_CLUSTER(MayaQWidgetDockableMixin, QtGui.QMainWindow):
                     cmds.percent(mirror_cluster_name,opp_vtx_list[a],v=cluster_wight_value_list[a])
                     a+=1
 
-                cmds.setAttr((cluster_handle_name + '.rotatePivotX'),self.new_position[0])
-                cmds.setAttr((cluster_handle_name + '.rotatePivotY'),self.new_position[1])
-                cmds.setAttr((cluster_handle_name + '.rotatePivotZ'),self.new_position[2])
-                cmds.setAttr((cluster_handle_name + '.scalePivotX'),self.new_position[0])
-                cmds.setAttr((cluster_handle_name + '.scalePivotY'),self.new_position[1])
-                cmds.setAttr((cluster_handle_name + '.scalePivotZ'),self.new_position[2])
+                self.rig_help_class.pivot_move(cluster_handle_name,self.new_position)
 
                 cmds.setAttr((cluster_shape_name + '.originX'),self.new_position[0])
                 cmds.setAttr((cluster_shape_name + '.originY'),self.new_position[1])

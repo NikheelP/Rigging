@@ -3,11 +3,14 @@ import maya.api.OpenMaya as om
 import maya.api.OpenMayaAnim as oma
 import maya.cmds as cmds
 import maya.mel as mel
+import rig_helper
 
 
 class SOFT_SELECTION_TO_CLUSTER:
     def __init__(self):
         self.soft_select_to_cluster_def()
+
+        self.rig_help_class = rig_helper.rig_help()
 
     def soft_select_to_cluster_def(self):
         sel_vert = cmds.ls(sl=True)
@@ -55,14 +58,10 @@ class SOFT_SELECTION_TO_CLUSTER:
             cmds.progressBar(gMainProgressBar, edit=True, step=add_value)
         cmds.progressBar(gMainProgressBar, edit=True, endProgress=True)
 
-
         point_position  = cmds.pointPosition(sel_vert[0])
-        cmds.setAttr((cluster_handle_name + '.rotatePivotX'),point_position[0])
-        cmds.setAttr((cluster_handle_name + '.rotatePivotY'),point_position[1])
-        cmds.setAttr((cluster_handle_name + '.rotatePivotZ'),point_position[2])
-        cmds.setAttr((cluster_handle_name + '.scalePivotX'),point_position[0])
-        cmds.setAttr((cluster_handle_name + '.scalePivotY'),point_position[1])
-        cmds.setAttr((cluster_handle_name + '.scalePivotZ'),point_position[2])
+
+        #Move the Pivot on the positon
+        self.rig_help_class.pivot_move(cluster_handle_name,point_position)
 
         cmds.setAttr((cluster_shape_name + '.originX'),point_position[0])
         cmds.setAttr((cluster_shape_name + '.originY'),point_position[1])

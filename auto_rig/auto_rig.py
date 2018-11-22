@@ -13,12 +13,15 @@ from PySide import QtGui
 import sys
 from functools import partial
 
-import add_new
+import add_new,head_update
 reload(add_new)
+reload(head_update)
 
 
 class AUTO_RIG:
     def __init__(self):
+        self.head_update_class = head_update.HEAD_UPDATE()
+
         pass
 
     def ui(self,widget):
@@ -250,7 +253,8 @@ class AUTO_RIG:
         # HEAD
         self.head_tab = QtGui.QWidget()
         self.head_tab.setObjectName("head_tab")
-        #self.head_class.update_gui(self.head_tab)
+        print('this is working now')
+        self.head_update_class.ui(self.head_tab)
         self.tabWidget.addTab(self.head_tab, "Head")
 
         # SPINE

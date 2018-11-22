@@ -1,3 +1,7 @@
+
+
+
+
 class HEAD:
     def __init__(self):
         self.helper_class = helper.HELPER()
@@ -244,7 +248,7 @@ class HEAD:
         self.head_ctrl_freez_rotate = False
         self.head_ctrl_freez_scale = True
 
-        # LOERT MOUTH
+        # LOWER MOUTH
         self.lower_mouth_ctrl_size = [0.5, 0.5, 0.5]
         self.lower_mouth_ctrl_rotate = [90, 0, 0]
         self.lower_mouth_ctrl_color = 'Yellow'
@@ -252,7 +256,7 @@ class HEAD:
         self.lower_mouth_ctrl_freez_rotate = True
         self.lower_mouth_ctrl_freez_scale = True
 
-        # UPPER MPUTH
+        # UPPER MOUTH
         self.upper_mouth_ctrl_size = [0.5, 0.5, 0.5]
         self.upper_mouth_ctrl_rotate = [90, 0, 0]
         self.upper_mouth_ctrl_color = 'Yellow'

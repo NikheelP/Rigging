@@ -54,15 +54,12 @@ class COMBINE_JOINT:
                     if value != 0:
                         cmds.skinPercent( skin_clster_name[0], vtx_no,
                                           transformValue=[(sel_jnt[a], 0)])
-
                     b+=1
                 jnt_connection_list = cmds.listConnections( skin_clster_name[0], type='joint')
                 c = 0
                 while c < len(jnt_connection_list):
                     cmds.setAttr((jnt_connection_list[c] + '.liw'),1)
                     c+=1
-
-
                 a+=1
 
             a = 0
@@ -71,8 +68,3 @@ class COMBINE_JOINT:
                 cmds.setAttr((sel_jnt[a] + '.liw'),0)
                 cmds.setAttr((combine_jnt_name + '.liw'),0)
                 a+=1
-
-
-
-
-

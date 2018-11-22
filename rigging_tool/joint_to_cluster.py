@@ -63,28 +63,9 @@ class JOINT_TO_CLUSTER:
                             cmds.setAttr((cluster_shape_name + '.originY'), point_position[1])
                             cmds.setAttr((cluster_shape_name + '.originZ'), point_position[2])
 
-                            '''
-                            #Create a locator and snap to the object and connect to the cluster
-                            loc_name = sel_jnt[a] + "_" + obj_name[d] +   '_Clu_Handle'
-                            cmds.spaceLocator(p=(0, 0, 0), n=loc_name)
-                            cmds.parentConstraint(sel_jnt[a], loc_name, mo=False)
-                            cmds.select(loc_name + "_parentConstraint1")
-                            cmds.delete()
-                            cmds.select(loc_name)
-                            cmds.DeleteHistory()
-                            cmds.makeIdentity(apply=True, t=1, r=1, s=1, n=0, pn=1)
-                            cmds.connectAttr((loc_name + '.t'), (cluster_name + 'Handle.t'), f=True)
-                            cmds.connectAttr((loc_name + '.r'), (cluster_name + 'Handle.r'), f=True)
-                            cmds.connectAttr((loc_name + '.s'), (cluster_name + 'Handle.s'), f=True)
-                            cmds.setAttr((cluster_name + ".relative"), 1)
-                            cmds.select((cluster_name + 'Handle'), loc_name)
-                            cmds.parent()
-                            cmds.setAttr((cluster_name + "Handle.v"), 0)
-                            '''
                             # now Transfer the value joint to the cluster
                             no_vtx = cmds.polyEvaluate(obj_name[d], v=True)
                             # get the cluster name
-                            # cluster_name = cmds.listConnections(cluster_name)
                             e = 0
                             while e < no_vtx:
                                 # get the influ val and snap to the cluster

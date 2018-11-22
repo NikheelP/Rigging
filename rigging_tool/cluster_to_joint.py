@@ -22,11 +22,9 @@ class CLUSTER_TO_JOINT:
             # sets -q cluster1Set;
             cluster_set_member = cmds.sets(cluster_sets_name, q=True)
             obj_name = cluster_set_member[0].split(".vtx")[0]
-            print cluster_name
             #print obj_name
             #get the particullar object list of the joint influ value
             #add to the list
-            print obj_name
             obj_list.append(obj_name)
 
             cmds.select(obj_name)
@@ -46,7 +44,6 @@ class CLUSTER_TO_JOINT:
                 cmds.select(jnt_name, obj_name)
                 cmds.SmoothBindSkin()
                 # find the skin cluster name
-                skin_cluster_name = mel.eval("findRelatedSkinCluster(\"%s\");" % obj_name)
             else:
                 #Create a base joint if there is not
                 if cmds.objExists("base_JNT"):
@@ -64,14 +61,7 @@ class CLUSTER_TO_JOINT:
                     # bind with surface
                     cmds.select(jnt_name, obj_name)
                     cmds.AddInfluence()
-                    #make all the lock and only make a base jnt as a on
-
-
             a+=1
-
-        #print obj_list
-        #
-
 
         b = 0
         while b < len(obj_list):
@@ -100,10 +90,6 @@ class CLUSTER_TO_JOINT:
                     cmds.skinPercent(skin_cluster_name, (obj_list[b] + '.vtx[%s]' % d),
                                      transformValue=[new_jnt_name, get_val[d]])
 
-                    d += 1
-
-
+                    d+=1
                 c+=1
-
-
             b+=1

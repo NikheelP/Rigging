@@ -1,8 +1,10 @@
 
 import maya.cmds as cmds
+import rig_helper
 
 class COMBINE_CLUSTER:
     def __init__(self):
+        self.rig_help_class = rig_helper.rig_help()
         self.combine_cluster_def()
 
     def combine_cluster_def(self):
@@ -78,10 +80,8 @@ class COMBINE_CLUSTER:
                     def_value.append(base_value)
                     b += 1
 
-
                 c = 0
                 #Create a combine Cluster
-
                 while c < len_sel_cluster:
                     cmds.select(sel_cluster[c])
                     cmds.move(0, 5, 0, r=True, os=True, wd=True)
@@ -91,7 +91,6 @@ class COMBINE_CLUSTER:
                     new_value = []
                     while f < no_vtx:
                         # get the new vertex value
-
                         new_value_1 = cmds.pointPosition(filter_list[d] + '.vtx[%s]' % f)[1]
                         new_value.append(new_value_1)
                         # Compare the old and new Value
@@ -110,11 +109,7 @@ class COMBINE_CLUSTER:
                     #put the cluster zero
                     cmds.select(sel_cluster[c])
                     cmds.move(0, -5, 0, r=True, os=True, wd=True)
-
-
                     c+=1
-
-
                 d+=1
 
             cmds.progressWindow(progressControl, endProgress=1)

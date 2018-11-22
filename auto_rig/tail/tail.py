@@ -145,7 +145,6 @@ class TAIL:
             default_pos -=2
             a+=1
 
-
         a = 0
         while a < self.tail_segment_line_edit_query:
 
