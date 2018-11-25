@@ -35,6 +35,7 @@ auto_rig_head_bird_path = auto_rig_head_path + '/human'
 
 auto_rig_leg_path = auto_rig_path + '/leg'
 auto_rig_leg_human = auto_rig_leg_path + '/human'
+auto_rig_leg_animsl = auto_rig_leg_path + '/animal'
 
 auto_rig_spine_path = auto_rig_path + '/spine'
 auto_rig_tail_path = auto_rig_path + '/tail'
@@ -44,7 +45,7 @@ blend_color_path = rigging_tool_path + '/blend_color'
 # append the object
 list = [rigging_path,auto_rig_path,rigging_tool_path,skinning_tool_path,ui_path,
         auto_rig_arm_path,auto_rig_controller_path,auto_rig_face_path,auto_rig_head_path,auto_rig_head_human_path,auto_rig_head_animal_path,auto_rig_head_bird_path,
-        auto_rig_leg_path,auto_rig_spine_path,auto_rig_wing_path,auto_rig_tail_path,auto_rig_leg_human,
+        auto_rig_leg_path,auto_rig_spine_path,auto_rig_wing_path,auto_rig_tail_path,auto_rig_leg_human,auto_rig_leg_animsl,
         blend_color_path]
 
 for each in list:

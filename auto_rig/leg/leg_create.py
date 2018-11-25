@@ -1,14 +1,16 @@
 
 import maya.cmds as cmds
-import rig_helper,human_leg
+import rig_helper,human_leg,animal_front_leg
 reload(rig_helper)
 reload(human_leg)
+reload(animal_front_leg)
 
 class LEG_CREATE:
 
     def __init__(self):
         self.rig_helper_class = rig_helper.rig_help()
         self.human_leg_class = human_leg.HUMAN_LEG()
+        self.animal_front_leg_class = animal_front_leg.FRONT_LEG()
 
     def leg_create(self,mirror,left_leg,right_leg,hip,butt,
                    thine_to_knee,knee_to_foot,foot,no_finger,
@@ -50,16 +52,22 @@ class LEG_CREATE:
                                      leg_finger = self.leg_finger)
 
         if self.type == 'Animal_Front_Leg':
-            self.scapula_pos = pos_list['scapula_pos']
-            self.upper_hand_pos = pos_list['upper_hand_pos']
-            self.shoulder_pos = pos_list['shoulder_pos']
-            self.lbow_pos = pos_list['lbow_pos']
-            self.hand_pos = pos_list['hand_pos']
-            self.hand_offset_pos = pos_list['hand_offset_pos']
-            self.end_pos = pos_list['end_pos']
-            self.leg_side_1_pos = pos_list['leg_side_1_pos']
-            self.leg_side_2_pos = pos_list['leg_side_2_pos']
-            self.leg_back_pos = pos_list['leg_back_pos']
+            self.animal_front_leg_class.new(mirror=mirror,
+                                            left_leg=left_leg,
+                                            right_leg=right_leg,
+                                            hip=hip,
+                                            thine_to_knee=thine_to_knee,
+                                            knee_to_foot=knee_to_foot,
+                                            foot=foot,
+                                            no_finger=no_finger,
+                                            prefix_name=prefix_name,
+                                            finger_list=finger_list,
+                                            pos_list=pos_list,
+                                            butt=butt,
+                                            side=self.side,
+                                            base_ctrl_color=self.base_ctrl_color,
+                                            leg_finger=self.leg_finger)
+
 
         if self.type == 'Animal_Back_Leg':
             self.thine_pos = pos_list['thine_pos']

@@ -600,7 +600,13 @@ class rig_help:
 
 
 
+    def get_var(self,common_name):
 
+        sphere_name = common_name + "_Geo"
+        clu_name = common_name + '_Clu'
+        clu_handle_name = clu_name + 'Handle'
+
+        return sphere_name,clu_name,clu_handle_name
 
 
 
