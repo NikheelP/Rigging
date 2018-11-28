@@ -292,18 +292,18 @@ class ADD_NEW:
 
             if type == 'Animal_Front_Leg':
                 pos_list = {}
-                pos_list['leg_center'] = [0,93,0]
+                pos_list['leg_center'] = [0, 93, 0]
                 pos_list['scapula_pos'] = [-7.953, 89.142, -7.015]
                 pos_list['upper_hand_pos'] = [-7.953, 68.187, 7.75]
                 pos_list['shoulder_pos'] = [-7.953, 52.916, -4.136]
                 pos_list['lbow_pos'] = [-7.953, 30.145, -1.488]
                 pos_list['hand_pos'] = [-7.953, 12.302, -3.793]
-                pos_list['hand_offset_pos'] = [-7.953, 6.027, -1.876]
-                pos_list['hand_mid_pos'] = [-7.953, 3.127, 0]
+                pos_list['hand_offset_1_pos'] = [-7.953, 6.027, -1.876]
+                pos_list['hand_offset_2_pos'] = [-7.953, 3.127, 0]
                 pos_list['end_pos'] = [-7.953, 0.911, 3.735]
-                pos_list['leg_side_1_pos'] = [-10.792, 0.895, 0.371]
-                pos_list['leg_side_2_pos'] = [-5.317, 0.895, 0.371]
-                pos_list['leg_back_pos'] = [-7.953, 0.926, -0.692]
+                pos_list['hand_side_1_pos'] = [-10.792, 0.895, 0.371]
+                pos_list['hand_side_2_pos'] = [-5.317, 0.895, 0.371]
+                pos_list['hand_back_pos'] = [-7.953, 0.926, -0.692]
                 pos_list['Shoulder_Center_pos'] = [0, 93, 0]
 
             if type == 'Animal_Back_Leg':
@@ -338,4 +338,3 @@ class ADD_NEW:
                                              finger_list=finger_list,
                                              type=type,
                                              leg_finger=self.leg_finger_line_edit)
-

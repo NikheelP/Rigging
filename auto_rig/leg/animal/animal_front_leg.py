@@ -78,9 +78,10 @@ class FRONT_LEG:
         self.controller_def()
 
         # Create a Final Grp
-        list_grp = [self.clu_grp_name, self.ctrl_grp_name, self.sphere_grp_name, self.cylinder_grp_name,
-                    self.crv_grp_name]
-        list = [self.cluster_list, self.ctrl_list, self.sphere_list, self.cylinder_list, self.crv_list]
+        list_grp = [self.clu_grp_name, self.ctrl_grp_name, self.sphere_grp_name, self.cylinder_grp_name]
+        list = [self.cluster_list, self.ctrl_list, self.sphere_list, self.cylinder_list]
+
+        print self.cluster_list
 
         self.rig_helper_class.final_grp(type='Front_Leg',
                                         list_grp=list_grp,
@@ -89,6 +90,7 @@ class FRONT_LEG:
                                         side=self.side,
                                         val=self.val,
                                         character_type=self.type)
+        
         cmds.setAttr((self.clu_grp_name + '.v'), 0)
 
 
@@ -210,7 +212,6 @@ class FRONT_LEG:
             self.pos_list.append(self.hand_center_pos)
 
     def leg_cylinder(self):
-
         # SCAPULA TO UPPER HAND
         self.scapula_to_upper_hand_common = self.prefix_name + "_" + self.side + '_' + self.type + '_Front_Hand_Scapula_to_Upper_Hand_Tem_' + str(
             self.val)
@@ -430,11 +431,11 @@ class FRONT_LEG:
         self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_handle_name = self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_name + 'Handle'
         self.cylinder_rotate = [0, 0, 90]
         self.cluster_list.append(self.hand_offset_2_to_hand_side_2_lower_cylinder_cluster_handle_name)
-        self.cluster_list.append(self.hand_offset_2_to_hand_side_1_upper_cylinder_cluster_handle_name)
+        self.cluster_list.append(self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_handle_name)
         self.cylinder_list.append(self.hand_offset_2_to_hand_side_2_cylinder_name)
         self.rig_helper_class.set_cylinder_position(self.hand_offset_2_to_hand_side_2_cylinder_name,
-                                                    self.hand_offset_2_to_hand_side_2_lower_cylinder_cluster_handle_name,
-                                                    self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_handle_name,
+                                                    self.hand_offset_2_to_hand_side_2_lower_cylinder_cluster_name,
+                                                    self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_name,
                                                     self.hand_offset_2_sphere_name,
                                                     self.hand_side_2_sphere_name,
                                                     rotate_val=[self.cylinder_rotate[0],
@@ -452,12 +453,12 @@ class FRONT_LEG:
                 self.val) + '_Clu'
             self.scapula_to_hand_center_upper_cylinder_cluster_handle_name = self.scapula_to_hand_center_upper_cylinder_cluster_name + 'Handle'
             self.cylinder_rotate = [0, 0, 90]
-            self.cluster_list.append(self.hand_offset_2_to_hand_side_2_lower_cylinder_cluster_handle_name)
-            self.cluster_list.append(self.hand_offset_2_to_hand_side_1_upper_cylinder_cluster_handle_name)
+            self.cluster_list.append(self.scapula_to_hand_center_lower_cylinder_cluster_handle_name)
+            self.cluster_list.append(self.scapula_to_hand_center_upper_cylinder_cluster_handle_name)
             self.cylinder_list.append(self.scapula_to_hand_center_cylinder_name)
             self.rig_helper_class.set_cylinder_position(self.scapula_to_hand_center_cylinder_name,
-                                                        self.scapula_to_hand_center_lower_cylinder_cluster_handle_name,
-                                                        self.scapula_to_hand_center_upper_cylinder_cluster_handle_name,
+                                                        self.scapula_to_hand_center_lower_cylinder_cluster_name,
+                                                        self.scapula_to_hand_center_upper_cylinder_cluster_name,
                                                         self.scapula_sphere_name,
                                                         self.hand_center_sphere_name,
                                                         rotate_val=[self.cylinder_rotate[0],
@@ -560,6 +561,7 @@ class FRONT_LEG:
                            self.hand_offset_2_to_back_lower_cylinder_cluster_handle_name,
                            self.hand_offset_2_to_hand_side_1_lower_cylinder_cluster_handle_name,
                            self.hand_offset_2_to_hand_side_2_lower_cylinder_cluster_handle_name]
+
         self.rig_helper_class.controller_small_big(base_name=self.hand_offset_2_common,
                                                    parent_list=self.const_list,
                                                    pos=self.hand_offset_2_pos,
@@ -568,7 +570,63 @@ class FRONT_LEG:
         self.hand_offset_2_inner_ctrl = self.hand_offset_2_common + '_Inner_Ctrl'
         self.hand_offset_2_outer_ctrl = self.hand_offset_2_common + '_Outer_Ctrl'
         cmds.parent(self.hand_offset_2_outer_ctrl, self.hand_offset_1_outer_ctrl)
-        print('this is working now')
+
+        # HAND END
+        self.const_list = [self.end_clu_handle_name,
+                           self.hand_offset_2_to_end_upper_cylinder_cluster_handle_name]
+
+        self.rig_helper_class.controller_small_big(base_name=self.end_common,
+                                                   parent_list=self.const_list,
+                                                   pos=self.end_pos,
+                                                   ctrl_rotate=self.ctrl_rotate,
+                                                   base_ctrl_color=self.base_ctrl_color)
+        self.end_inner_ctrl = self.end_common + '_Inner_Ctrl'
+        self.end_outer_ctrl = self.end_common + '_Outer_Ctrl'
+        cmds.parent(self.end_outer_ctrl, self.hand_offset_2_outer_ctrl)
+
+        # HAND BACK
+        self.const_list = [self.hand_back_clu_handle_name,
+                           self.hand_offset_2_to_back_upper_cylinder_cluster_handle_name]
+
+        self.rig_helper_class.controller_small_big(base_name=self.hand_back_common,
+                                                   parent_list=self.const_list,
+                                                   pos=self.hand_back_pos,
+                                                   ctrl_rotate=self.ctrl_rotate,
+                                                   base_ctrl_color=self.base_ctrl_color)
+        self.back_inner_ctrl = self.hand_back_common + '_Inner_Ctrl'
+        self.back_outer_ctrl = self.hand_back_common + '_Outer_Ctrl'
+        cmds.parent(self.back_outer_ctrl, self.hand_offset_2_outer_ctrl)
+
+        # HAND SIDE 1 BACK
+        self.ctrl_lower_size = [0.2, 0.2, 0.2]
+        self.ctrl_outer_size = [1.0, 1.0, 1.0]
+        self.const_list = [self.hand_side_1_clu_handle_name,
+                           self.hand_offset_2_to_hand_side_1_upper_cylinder_cluster_handle_name]
+
+        self.rig_helper_class.controller_small_big(base_name=self.hand_side_1_common,
+                                                   parent_list=self.const_list,
+                                                   pos=self.hand_side_1_pos,
+                                                   ctrl_rotate=self.ctrl_rotate,
+                                                   base_ctrl_color=self.base_ctrl_color)
+        self.hand_side_1_inner_ctrl = self.hand_side_1_common + '_Inner_Ctrl'
+        self.hand_side_1_outer_ctrl = self.hand_side_1_common + '_Outer_Ctrl'
+        cmds.parent(self.hand_side_1_outer_ctrl, self.hand_offset_2_outer_ctrl)
+
+        # HAND SIDE 2 BACK
+        self.const_list = [self.hand_side_2_clu_handle_name,
+                           self.hand_offset_2_to_hand_side_2_upper_cylinder_cluster_handle_name]
+
+        self.rig_helper_class.controller_small_big(base_name=self.hand_side_2_common,
+                                                   parent_list=self.const_list,
+                                                   pos=self.hand_side_2_pos,
+                                                   ctrl_rotate=self.ctrl_rotate,
+                                                   base_ctrl_color=self.base_ctrl_color)
+        self.hand_side_2_inner_ctrl = self.hand_side_2_common + '_Inner_Ctrl'
+        self.hand_side_2_outer_ctrl = self.hand_side_2_common + '_Outer_Ctrl'
+        cmds.parent(self.hand_side_2_outer_ctrl, self.hand_offset_2_outer_ctrl)
+
+
+
 
 
 
