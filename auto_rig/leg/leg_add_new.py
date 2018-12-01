@@ -243,7 +243,7 @@ class ADD_NEW:
 
             if type == 'Animal_Back_Leg':
                 pos_list = {}
-                pos_list['Hip_Center'] = [0,89,0]
+                pos_list['leg_Center'] = [0,89,0]
                 pos_list['thine_pos'] = [9.094, 88.652, -6.864]
                 pos_list['shine_pos'] = [9.094, 67.303, 3.654]
                 pos_list['foot_pos'] = [9.094, 32.134, -10.356]
@@ -308,7 +308,7 @@ class ADD_NEW:
 
             if type == 'Animal_Back_Leg':
                 pos_list = {}
-                pos_list['Hip_Center'] = [0, 89, 0]
+                pos_list['leg_Center'] = [0, 89, 0]
                 pos_list['thine_pos'] = [-9.094, 88.652, -6.864]
                 pos_list['shine_pos'] = [-9.094, 67.303, 3.654]
                 pos_list['foot_pos'] = [-9.094, 32.134, -10.356]

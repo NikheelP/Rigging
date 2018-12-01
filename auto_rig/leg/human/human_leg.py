@@ -66,7 +66,7 @@ class HUMAN_LEG:
         self.rig_helper_class.sphere_create(sphere_list=self.sphere_list,
                                             pos_list=self.pos_list,
                                             cluster_list=self.cluster_list)
-
+        
         # Create a Cylinder
         self.leg_cylinder()
 
@@ -271,6 +271,7 @@ class HUMAN_LEG:
             cmds.delete()
 
         #Create a Finger
+
         '''
         # Create a Finger
         if self.foot == True:
@@ -286,7 +287,7 @@ class HUMAN_LEG:
         list_grp = [self.clu_grp_name, self.ctrl_grp_name, self.sphere_grp_name, self.cylinder_grp_name,
                     self.crv_grp_name]
         list = [self.cluster_list, self.ctrl_list, self.sphere_list, self.cylinder_list, self.crv_list]
-
+        
         self.rig_helper_class.final_grp(type='Leg',
                                         list_grp=list_grp,
                                         list=list,
@@ -295,6 +296,9 @@ class HUMAN_LEG:
                                         val=self.val,
                                         character_type=self.type)
         cmds.setAttr((self.clu_grp_name + '.v'), 0)
+
+
+
 
     def leg_var(self):
         self.sphere_list = []

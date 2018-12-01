@@ -8,7 +8,6 @@ reload(rig_helper)
 class FRONT_LEG:
     def __init__(self):
         self.rig_helper_class = rig_helper.rig_help()
-        print('this is the front leg')
 
     def new(self,mirror,left_leg,right_leg,hip,thine_to_knee,knee_to_foot,foot,no_finger,prefix_name,finger_list,
             pos_list,butt,side,base_ctrl_color,leg_finger):
@@ -80,10 +79,8 @@ class FRONT_LEG:
         # Create a Final Grp
         list_grp = [self.clu_grp_name, self.ctrl_grp_name, self.sphere_grp_name, self.cylinder_grp_name]
         list = [self.cluster_list, self.ctrl_list, self.sphere_list, self.cylinder_list]
-
-        print self.cluster_list
-
-        self.rig_helper_class.final_grp(type='Front_Leg',
+        type = 'Leg'
+        self.rig_helper_class.final_grp(type=type,
                                         list_grp=list_grp,
                                         list=list,
                                         prefix_name=self.prefix_name,
@@ -93,6 +90,11 @@ class FRONT_LEG:
         
         cmds.setAttr((self.clu_grp_name + '.v'), 0)
 
+        #Set the Hip if the Grp is not PARENT
+        if self.hip == True:
+            type_grp = type + '_Grp'
+            self.rig_helper_class.set_parent(child_name=self.hand_center_outer_ctrl,
+                                             grp_name=type_grp)
 
     def leg_var(self,prefix_name,side,type,val):
         self.prefix_name = prefix_name
@@ -207,9 +209,12 @@ class FRONT_LEG:
         if self.hip == True:
             self.hand_center_common = self.prefix_name + '_' + self.type + '_Front_Hand_Center_Tem_' + str(self.val)
             self.hand_center_sphere_name,self.hand_center_clu_name,self.hand_center_clu_handle_name = self.rig_helper_class.get_var(common_name=self.hand_center_common)
-            self.sphere_list.append(self.hand_center_sphere_name)
-            self.cluster_list.append(self.hand_center_clu_name)
-            self.pos_list.append(self.hand_center_pos)
+            if cmds.objExists(self.hand_center_sphere_name):
+                pass
+            else:
+                self.sphere_list.append(self.hand_center_sphere_name)
+                self.cluster_list.append(self.hand_center_clu_name)
+                self.pos_list.append(self.hand_center_pos)
 
     def leg_cylinder(self):
         # SCAPULA TO UPPER HAND
@@ -465,6 +470,7 @@ class FRONT_LEG:
                                                                     self.cylinder_rotate[1],
                                                                     self.cylinder_rotate[2]])
 
+
     def controller_def(self):
         # CREATE CONTROLLER
         self.ctrl_lower_size = [0.5, 0.5, 0.5]
@@ -624,6 +630,32 @@ class FRONT_LEG:
         self.hand_side_2_inner_ctrl = self.hand_side_2_common + '_Inner_Ctrl'
         self.hand_side_2_outer_ctrl = self.hand_side_2_common + '_Outer_Ctrl'
         cmds.parent(self.hand_side_2_outer_ctrl, self.hand_offset_2_outer_ctrl)
+
+        if self.hip == True:
+            self.hand_center_inner_ctrl_name = self.hand_center_common + '_Inner_Ctrl'
+            if cmds.objExists(self.hand_center_inner_ctrl_name):
+                cmds.parentConstraint(self.hand_center_inner_ctrl_name, self.scapula_to_hand_center_upper_cylinder_cluster_handle_name, mo=True)
+                cmds.parentConstraint(self.scapula_inner_ctrl,
+                                      self.scapula_to_hand_center_lower_cylinder_cluster_handle_name, mo=True)
+            else:
+                self.const_list = [self.scapula_to_hand_center_upper_cylinder_cluster_handle_name]
+                self.rig_helper_class.controller_small_big(base_name=self.hand_center_common,
+                                                           parent_list=self.const_list,
+                                                           pos=self.hand_center_pos,
+                                                           ctrl_rotate=self.ctrl_rotate,
+                                                           base_ctrl_color=self.base_ctrl_color)
+                self.hand_center_inner_ctrl = self.hand_center_common + '_Inner_Ctrl'
+                self.hand_center_outer_ctrl = self.hand_center_common + '_Outer_Ctrl'
+                cmds.parentConstraint(self.hand_center_inner_ctrl,self.hand_center_clu_handle_name,mo=True)
+                cmds.parentConstraint(self.scapula_inner_ctrl,
+                                      self.scapula_to_hand_center_lower_cylinder_cluster_handle_name, mo=True)
+
+
+            cmds.parentConstraint(self.hand_center_outer_ctrl,
+                                  self.scapula_outer_ctrl,mo=True)
+
+
+
 
 
 

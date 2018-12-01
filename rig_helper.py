@@ -79,9 +79,8 @@ class rig_help:
         if cmds.objExists(grp_name):
             #get the parent of the object
             parent_name = cmds.listRelatives(object_name,p=True)
-            if parent_name != None:
-                cmds.select(object_name,grp_name)
-                cmds.parent()
+            cmds.select(object_name,grp_name)
+            cmds.parent()
         else:
             cmds.select(object_name)
             cmds.group(n=grp_name)
@@ -156,10 +155,7 @@ class rig_help:
         self.color_val(color,name)
 
     def parent_constraint(self,parent,child_list,mo=False):
-
         for each_obj in child_list:
-            print('this is the parent : ' , parent)
-            print('this is the each obj : ' , each_obj)
             cmds.parentConstraint(parent, each_obj, mo=mo)
 
     def scale_constraint(self,parent,child_list,mo=False):
@@ -224,7 +220,6 @@ class rig_help:
                             grp_name=main_group_name)
 
             a+=1
-
         grp_name  = type + '_Grp'
         self.grp_create(object_name=main_group_name,
                         grp_name=grp_name)
