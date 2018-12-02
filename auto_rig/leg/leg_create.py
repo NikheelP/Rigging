@@ -68,23 +68,34 @@ class LEG_CREATE:
                                             base_ctrl_color=self.base_ctrl_color,
                                             leg_finger=self.leg_finger)
 
-
         if self.type == 'Animal_Back_Leg':
-            self.thine_pos = pos_list['thine_pos']
-            self.shine_pos = pos_list['shine_pos']
-            self.foot_pos = pos_list['foot_pos']
-            self.foot_offset_1_pos = pos_list['foot_offset_1']
-            self.foot_offset_2_pos = pos_list['foot_offset_2']
-            self.foot_offset_3_pos = pos_list['foot_offset_3']
-            self.foot_end_pos = pos_list['foot_end']
-            self.foot_back_pos = pos_list['foot_back']
-            self.foot_side_1_pos = pos_list['foot_side_1']
-            self.foot_side_2_pos = pos_list['foot_side_2']
+            self.animal_front_leg_class.new(mirror=mirror,
+                                            left_leg=left_leg,
+                                            right_leg=right_leg,
+                                            hip=hip,
+                                            thine_to_knee=thine_to_knee,
+                                            knee_to_foot=knee_to_foot,
+                                            foot=foot,
+                                            no_finger=no_finger,
+                                            prefix_name=prefix_name,
+                                            finger_list=finger_list,
+                                            pos_list=pos_list,
+                                            butt=butt,
+                                            side=self.side,
+                                            base_ctrl_color=self.base_ctrl_color,
+                                            leg_finger=self.leg_finger)
 
-
-
-
-
+            pos_list['leg_Center'] = [0, 89, 0]
+            pos_list['thine_pos'] = [9.094, 88.652, -6.864]
+            pos_list['shine_pos'] = [9.094, 67.303, 3.654]
+            pos_list['foot_pos'] = [9.094, 32.134, -10.356]
+            pos_list['foot_offset_1'] = [9.094, 12.25, -7.317]
+            pos_list['foot_offset_2'] = [9.094, 5.471, -3.574]
+            pos_list['foot_offset_3'] = [9.094, 2.322, -0.581]
+            pos_list['foot_end'] = [9.094, 0, 3.213]
+            pos_list['foot_back'] = [9.094, 0, -1.781]
+            pos_list['foot_side_1'] = [6.036, 0, 0]
+            pos_list['foot_side_2'] = [12.324, 0, 0]
 
     def leg_var(self):
         self.sphere_list = []
